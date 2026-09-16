@@ -278,8 +278,13 @@
           </div>
 
           <div>
-            <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1.5 font-semibold">Logo Initials</label>
+            <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1.5 font-semibold">Logo Initials (e.g. SM.)</label>
             <input type="text" id="prof_initials" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-100 text-sm focus:outline-none focus:border-cyan-400" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1.5 font-semibold">Navbar Subtitle / Tagline (under logo name)</label>
+            <input type="text" id="prof_brandSubtitle" placeholder="e.g. IT Technical Support, Systems & Solutions" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-100 text-sm focus:outline-none focus:border-cyan-400" />
           </div>
 
           <div>
@@ -664,6 +669,7 @@
       document.getElementById('prof_name').value = p.name || '';
       document.getElementById('prof_shortName').value = p.shortName || '';
       document.getElementById('prof_initials').value = p.initials || '';
+      document.getElementById('prof_brandSubtitle').value = p.brandSubtitle || 'IT Technical Support';
       document.getElementById('prof_avatarUrl').value = p.avatarUrl || '';
       updateAvatarPreview(p.avatarUrl || '');
 
@@ -1119,6 +1125,7 @@
       portfolioData.profile.name = document.getElementById('prof_name').value.trim();
       portfolioData.profile.shortName = document.getElementById('prof_shortName').value.trim();
       portfolioData.profile.initials = document.getElementById('prof_initials').value.trim();
+      portfolioData.profile.brandSubtitle = document.getElementById('prof_brandSubtitle').value.trim();
       portfolioData.profile.avatarUrl = document.getElementById('prof_avatarUrl').value.trim();
       portfolioData.profile.statusBadge = document.getElementById('prof_statusBadge').value.trim();
       portfolioData.profile.email = document.getElementById('prof_email').value.trim();

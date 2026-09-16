@@ -184,7 +184,7 @@
           </div>
           <div class="flex flex-col">
             <span id="navName" class="font-bold text-sm sm:text-base tracking-tight text-slate-100 group-hover:text-white transition-colors">Shameer M.</span>
-            <span class="text-[10px] font-mono text-cyan-400/90 tracking-wider uppercase">Systems & Solutions</span>
+            <span id="navSubtitle" class="text-[10px] font-mono text-cyan-400/90 tracking-wider uppercase">IT Technical Support</span>
           </div>
         </a>
 
@@ -727,6 +727,7 @@
         name: "Shameer Mananthody",
         shortName: "Shameer M.",
         initials: "SM.",
+        brandSubtitle: "IT Technical Support",
         title: "Senior IT Technical Support Specialist",
         statusBadge: "Available for Technical Roles & Consulting",
         headline: 'Reliable <span class="text-gradient">IT Technical Support</span>, Hardware Diagnostics & Network Solutions',
@@ -1059,8 +1060,10 @@
       // Nav branding
       const navInitials = document.getElementById('navInitials');
       const navName = document.getElementById('navName');
+      const navSubtitle = document.getElementById('navSubtitle');
       if (navInitials) navInitials.innerHTML = `${profile.initials || 'SM.'}`;
       if (navName) navName.textContent = profile.shortName || profile.name;
+      if (navSubtitle) navSubtitle.textContent = profile.brandSubtitle || 'IT Technical Support';
 
       // Hero Avatar Photo (if provided)
       const heroAvatarContainer = document.getElementById('heroAvatarContainer');

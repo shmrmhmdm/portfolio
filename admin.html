@@ -143,26 +143,37 @@
         </div>
 
         <!-- Action Header Controls -->
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2 sm:gap-3">
           <!-- View Live Site Button -->
           <a 
             href="index.html" 
             target="_blank" 
-            class="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-slate-300 hover:text-white bg-slate-900 border border-slate-700 hover:border-slate-600 rounded-xl transition-all"
+            class="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-300 hover:text-white bg-slate-900 border border-slate-700 hover:border-slate-600 rounded-xl transition-all"
             title="View live portfolio in new tab"
           >
             <i data-lucide="external-link" class="w-3.5 h-3.5 text-cyan-400"></i>
-            <span class="hidden sm:inline">Preview Live Portfolio</span>
+            <span class="hidden md:inline">Preview Live</span>
           </a>
 
           <!-- Save to Supabase Cloud Button -->
           <button 
             onclick="saveDataToSupabase()" 
             id="saveCloudBtn"
-            class="flex items-center gap-2 px-4 py-2 text-xs font-bold text-slate-950 bg-gradient-to-r from-cyan-400 via-cyan-300 to-indigo-300 hover:shadow-lg hover:shadow-cyan-500/25 active:scale-95 rounded-xl transition-all"
+            class="flex items-center gap-2 px-3.5 sm:px-4 py-2 text-xs font-bold text-slate-950 bg-gradient-to-r from-cyan-400 via-cyan-300 to-indigo-300 hover:shadow-lg hover:shadow-cyan-500/25 active:scale-95 rounded-xl transition-all"
           >
             <i data-lucide="cloud-upload" id="saveIcon" class="w-4 h-4"></i>
             <span id="saveBtnText">Save & Publish</span>
+          </button>
+
+          <!-- Logout Button -->
+          <button 
+            onclick="logoutAdmin()" 
+            id="logoutBtn"
+            class="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-rose-300 hover:text-rose-200 bg-rose-950/40 hover:bg-rose-900/60 border border-rose-800/60 hover:border-rose-700 rounded-xl transition-all shadow-sm"
+            title="Lock & Logout Admin Panel"
+          >
+            <i data-lucide="log-out" class="w-3.5 h-3.5 text-rose-400"></i>
+            <span class="hidden sm:inline">Logout</span>
           </button>
         </div>
 
@@ -606,6 +617,16 @@
       localStorage.setItem('portfolio_admin_pin', newPin);
       document.getElementById('newPinInput').value = '';
       showToast('Admin PIN updated successfully!');
+    }
+
+    function logoutAdmin() {
+      sessionStorage.removeItem('portfolio_admin_authenticated');
+      document.getElementById('authOverlay').classList.remove('hidden');
+      document.getElementById('pinInput').value = '';
+      const pinError = document.getElementById('pinError');
+      if (pinError) pinError.classList.add('hidden');
+      showToast('🔒 Admin session locked. Logged out successfully!');
+      lucide.createIcons();
     }
 
     /**

@@ -589,16 +589,54 @@
 
     /**
      * =========================================================================
-     * 1. PIN AUTHENTICATION
+     * 1. PIN AUTHENTICATION (SUPABASE CLOUD SYNCED)
      * =========================================================================
      */
-    function handlePinSubmit(e) {
+    async function getValidAdminPin() {
+      // Check in-memory data first
+      if (portfolioData && portfolioData.adminPin) {
+        return portfolioData.adminPin;
+      }
+      
+      // Try fetching latest cloud PIN from Supabase
+      try {
+        const res = await fetch(SUPABASE_CONFIG.API_URL, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': SUPABASE_CONFIG.ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_CONFIG.ANON_KEY}`
+          }
+        });
+        if (res.ok) {
+          const rows = await res.json();
+          if (Array.isArray(rows) && rows.length > 0) {
+            const d = rows[0].data || rows[0];
+            if (d && d.adminPin) {
+              localStorage.setItem('portfolio_admin_pin', d.adminPin);
+              return d.adminPin;
+            }
+          }
+        }
+      } catch (err) {
+        console.warn('Could not fetch cloud PIN from Supabase:', err);
+      }
+      return localStorage.getItem('portfolio_admin_pin') || '1234';
+    }
+
+    async function handlePinSubmit(e) {
       e.preventDefault();
       const enteredPin = document.getElementById('pinInput').value.trim();
-      const savedPin = localStorage.getItem('portfolio_admin_pin') || '1234';
+      const pinBtn = e.target.querySelector('button[type="submit"]');
+      const originalText = pinBtn ? pinBtn.innerHTML : 'Unlock Dashboard';
+      if (pinBtn) pinBtn.innerHTML = 'Verifying...';
+
+      const validPin = await getValidAdminPin();
+      if (pinBtn) pinBtn.innerHTML = originalText;
+
       const pinError = document.getElementById('pinError');
 
-      if (enteredPin === savedPin) {
+      if (enteredPin === validPin || enteredPin === (localStorage.getItem('portfolio_admin_pin') || '1234')) {
         document.getElementById('authOverlay').classList.add('hidden');
         sessionStorage.setItem('portfolio_admin_authenticated', 'true');
         loadData();
@@ -608,15 +646,37 @@
       }
     }
 
-    function updateAdminPin() {
+    async function updateAdminPin() {
       const newPin = document.getElementById('newPinInput').value.trim();
       if (!newPin || newPin.length < 4) {
         alert('Please enter a PIN with at least 4 digits.');
         return;
       }
       localStorage.setItem('portfolio_admin_pin', newPin);
-      document.getElementById('newPinInput').value = '';
-      showToast('Admin PIN updated successfully!');
+      if (portfolioData) {
+        portfolioData.adminPin = newPin;
+      }
+
+      showToast('Saving new PIN to Supabase Cloud Database...');
+      try {
+        const baseUrl = SUPABASE_CONFIG.API_URL.split('?')[0];
+        const targetUrl = `${baseUrl}?id=eq.${SUPABASE_CONFIG.ROW_ID || 1}`;
+        await fetch(targetUrl, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': SUPABASE_CONFIG.ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_CONFIG.ANON_KEY}`,
+            'Prefer': 'return=representation'
+          },
+          body: JSON.stringify({ data: portfolioData })
+        });
+        document.getElementById('newPinInput').value = '';
+        showToast('🎉 Admin PIN successfully saved in Supabase Cloud Database!');
+      } catch (err) {
+        document.getElementById('newPinInput').value = '';
+        showToast('PIN updated locally (Click "Save & Publish" to sync to cloud)', true);
+      }
     }
 
     function logoutAdmin() {

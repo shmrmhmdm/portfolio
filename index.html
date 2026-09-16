@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shameer Mananthody | IT Systems Specialist & Solutions Engineer</title>
+  <meta name="description" content="Versatile IT Systems & Technical Support Specialist with 10+ years of hands-on experience maintaining high-uptime infrastructure, enterprise workstations, and building workflow automation tools." />
+  
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#ecfeff',
+              100: '#cffafe',
+              400: '#22d3ee',
+              500: '#06b6d4',
+              600: '#0891b2',
+            },
+            indigoAccent: {
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+            },
+            darkBg: '#090d16',
+            cardBg: 'rgba(15, 23, 42, 0.72)',
+            cardBorder: 'rgba(255, 255, 255, 0.08)',
+          },
+          animation: {
+            'blob-slow': 'blob 14s infinite',
+            'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+            'shimmer': 'shimmer 1.8s infinite linear',
+          },
+          keyframes: {
+            blob: {
+              '0%, 100%': { transform: 'translate(0px, 0px) scale(1)' },
+              '33%': { transform: 'translate(30px, -40px) scale(1.1)' },
+              '66%': { transform: 'translate(-20px, 20px) scale(0.95)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
+              '50%': { opacity: '0.8', transform: 'scale(1.05)' },
+            },
+            shimmer: {
+              '0%': { backgroundPosition: '-200% 0' },
+              '100%': { backgroundPosition: '200% 0' },
+            }
+          }
+        },
+      },
+    };
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Custom Glassmorphism & Scrollbar Styles */
+    body {
+      background-color: #080c14;
+      color: #e2e8f0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Subtle background grid pattern */
+    .bg-grid-pattern {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    /* Glass effect */
+    .glass-card {
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .glass-card:hover {
+      border-color: rgba(34, 211, 238, 0.35);
+      box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.15);
+    }
+
+    .glass-nav {
+      background: rgba(8, 12, 20, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* Gradient Text */
+    .text-gradient {
+      background: linear-gradient(135deg, #22d3ee 0%, #818cf8 50%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Skeleton Loading Shimmer */
+    .skeleton {
+      background: linear-gradient(90deg, rgba(30, 41, 59, 0.5) 25%, rgba(51, 65, 85, 0.7) 50%, rgba(30, 41, 59, 0.5) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.6s infinite ease-in-out;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #080c14;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #0891b2;
+    }
+
+    /* Active Nav Highlight */
+    .nav-link.active {
+      color: #22d3ee;
+      position: relative;
+    }
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #22d3ee, #818cf8);
+      border-radius: 2px;
+    }
+
+    /* Toast animation */
+    #toast {
+      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+  </style>
+</head>
+<body class="relative min-h-screen bg-grid-pattern selection:bg-cyan-500 selection:text-slate-900">
+
+  <!-- Progress Bar at Top -->
+  <div id="scrollProgress" class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-cyan-400 via-indigo-500 to-purple-500 z-50 transition-all duration-75 ease-out w-0"></div>
+
+  <!-- Ambient Light Orbs -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+    <div class="absolute top-10 left-1/4 w-[450px] h-[450px] bg-cyan-500/10 rounded-full blur-[120px] animate-blob-slow"></div>
+    <div class="absolute top-1/2 right-10 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[140px] animate-blob-slow" style="animation-delay: 4s;"></div>
+    <div class="absolute bottom-20 left-1/3 w-[400px] h-[400px] bg-cyan-600/8 rounded-full blur-[130px] animate-blob-slow" style="animation-delay: 8s;"></div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-slate-900/95 text-white px-5 py-3 rounded-xl border border-cyan-500/30 shadow-2xl backdrop-blur-md opacity-0 translate-y-8 pointer-events-none">
+    <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400"></i>
+    <span id="toastMsg" class="text-sm font-medium">Notification message</span>
+  </div>
+
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <header class="fixed top-0 left-0 w-full z-40 glass-nav transition-all duration-300" id="mainHeader">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        
+        <!-- Logo -->
+        <a href="#hero" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded-lg p-1">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 via-indigo-600 to-indigo-800 p-[1.5px] transition-transform duration-300 group-hover:scale-105 shadow-md shadow-cyan-500/20">
+            <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+              <span id="navInitials" class="font-mono font-extrabold text-base tracking-tighter text-white group-hover:text-cyan-400 transition-colors">SM<span class="text-cyan-400">.</span></span>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <span id="navName" class="font-bold text-sm sm:text-base tracking-tight text-slate-100 group-hover:text-white transition-colors">Shameer M.</span>
+            <span class="text-[10px] font-mono text-cyan-400/90 tracking-wider uppercase">Systems & Solutions</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8" id="desktopNav">
+          <a href="#about" class="nav-link text-xs font-medium uppercase tracking-wider text-slate-400 hover:text-slate-100 transition-colors">About</a>
+          <a href="#skills" class="nav-link text-xs font-medium uppercase tracking-wider text-slate-400 hover:text-slate-100 transition-colors">Skills</a>
+          <a href="#experience" class="nav-link text-xs font-medium uppercase tracking-wider text-slate-400 hover:text-slate-100 transition-colors">Experience</a>
+          <a href="#solutions" class="nav-link text-xs font-medium uppercase tracking-wider text-slate-400 hover:text-slate-100 transition-colors">Custom Solutions</a>
+          <a href="#education" class="nav-link text-xs font-medium uppercase tracking-wider text-slate-400 hover:text-slate-100 transition-colors">Credentials</a>
+          <a href="#contact" class="nav-link text-xs font-medium uppercase tracking-wider text-slate-400 hover:text-slate-100 transition-colors">Contact</a>
+        </nav>
+
+        <!-- Action Buttons -->
+        <div class="hidden sm:flex items-center gap-3">
+          <a 
+            href="#contact" 
+            class="flex items-center gap-2 px-3.5 py-2 text-xs font-semibold uppercase tracking-wider text-cyan-300 bg-cyan-950/60 hover:bg-cyan-900/60 border border-cyan-800/80 hover:border-cyan-400 rounded-xl transition-all duration-200"
+          >
+            <i data-lucide="mail" class="w-3.5 h-3.5 text-cyan-400"></i>
+            <span>Get in Touch</span>
+          </a>
+
+          <!-- LinkedIn Link -->
+          <a 
+            id="navLinkedinLink"
+            href="https://linkedin.com/in/shameermananthody" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white bg-slate-800/80 hover:bg-slate-800 border border-slate-700 hover:border-cyan-400/50 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10 active:scale-95"
+            aria-label="LinkedIn Profile"
+          >
+            <i data-lucide="linkedin" class="w-4 h-4 text-cyan-400"></i>
+            <span>LinkedIn</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button 
+          id="mobileMenuBtn" 
+          type="button" 
+          class="md:hidden p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/60 border border-slate-800 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+        >
+          <i data-lucide="menu" id="menuIconOpen" class="w-6 h-6"></i>
+          <i data-lucide="x" id="menuIconClose" class="w-6 h-6 hidden"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-slate-800/80 bg-slate-950/95 backdrop-blur-xl px-4 pt-4 pb-6 transition-all duration-300">
+      <div class="flex flex-col space-y-3">
+        <a href="#about" class="mobile-nav-link flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-cyan-400 hover:bg-slate-900 transition-colors">
+          <span>About Overview</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-600"></i>
+        </a>
+        <a href="#skills" class="mobile-nav-link flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-cyan-400 hover:bg-slate-900 transition-colors">
+          <span>Technical Capabilities</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-600"></i>
+        </a>
+        <a href="#experience" class="mobile-nav-link flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-cyan-400 hover:bg-slate-900 transition-colors">
+          <span>Career Milestones</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-600"></i>
+        </a>
+        <a href="#solutions" class="mobile-nav-link flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-cyan-400 hover:bg-slate-900 transition-colors">
+          <span>Custom Solutions & Projects</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-600"></i>
+        </a>
+        <a href="#education" class="mobile-nav-link flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-cyan-400 hover:bg-slate-900 transition-colors">
+          <span>Education & Credentials</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-600"></i>
+        </a>
+        <a href="#contact" class="mobile-nav-link flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-cyan-400 hover:bg-slate-900 transition-colors">
+          <span>Get in Touch</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-600"></i>
+        </a>
+        
+        <div class="pt-2 border-t border-slate-800">
+          <a 
+            id="mobileLinkedinLink"
+            href="https://linkedin.com/in/shameermananthody" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-cyan-600 to-indigo-600 shadow-lg shadow-cyan-500/20 active:scale-98"
+          >
+            <i data-lucide="linkedin" class="w-4 h-4"></i>
+            <span>Connect on LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col items-center text-center">
+
+        <!-- Dynamic Avatar Photo Container -->
+        <div id="heroAvatarContainer" class="empty:hidden mb-5"></div>
+
+        <!-- Dynamic Status Pill Badge -->
+        <div id="heroBadgeContainer" class="mb-8">
+          <div class="skeleton h-8 w-72 rounded-full"></div>
+        </div>
+
+        <!-- Dynamic Headline -->
+        <div id="heroHeadlineContainer" class="mb-6 max-w-4xl w-full">
+          <div class="skeleton h-14 sm:h-20 w-3/4 mx-auto rounded-2xl"></div>
+        </div>
+
+        <!-- Dynamic Subheading -->
+        <div id="heroSubheadingContainer" class="mb-10 max-w-3xl w-full">
+          <div class="skeleton h-6 w-5/6 mx-auto rounded-lg mb-2"></div>
+          <div class="skeleton h-6 w-2/3 mx-auto rounded-lg"></div>
+        </div>
+
+        <!-- CTA Action Buttons -->
+        <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-16">
+          <a 
+            href="#solutions" 
+            class="group relative inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-3.5 text-sm font-bold tracking-wide text-slate-950 bg-gradient-to-r from-cyan-400 via-cyan-300 to-indigo-300 rounded-xl shadow-lg shadow-cyan-500/25 hover:shadow-cyan-400/40 hover:scale-[1.02] active:scale-95 transition-all duration-200"
+          >
+            <i data-lucide="cpu" class="w-4 h-4 text-slate-950 transition-transform group-hover:rotate-12"></i>
+            <span>Explore Custom Tools</span>
+            <i data-lucide="arrow-down" class="w-4 h-4 text-slate-950 group-hover:translate-y-0.5 transition-transform"></i>
+          </a>
+
+          <a 
+            id="heroLinkedinCta"
+            href="https://linkedin.com/in/shameermananthody" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-3.5 text-sm font-semibold tracking-wide text-slate-200 bg-slate-900/80 hover:bg-slate-800/90 border border-slate-700/80 hover:border-indigo-500/50 rounded-xl backdrop-blur-md hover:text-white hover:scale-[1.02] active:scale-95 transition-all duration-200 shadow-md"
+          >
+            <i data-lucide="linkedin" class="w-4 h-4 text-cyan-400"></i>
+            <span>Connect on LinkedIn</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-400"></i>
+          </a>
+        </div>
+
+        <!-- Dynamic Quick Highlights Bar -->
+        <div class="w-full max-w-5xl">
+          <div id="highlightsContainer" class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 p-2 sm:p-3 rounded-2xl glass-card border border-slate-800">
+            <!-- Skeletons rendered by default -->
+            <div class="skeleton h-24 rounded-xl"></div>
+            <div class="skeleton h-24 rounded-xl"></div>
+            <div class="skeleton h-24 rounded-xl"></div>
+            <div class="skeleton h-24 rounded-xl"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT / VALUE PROPOSITION ==================== -->
+  <section id="about" class="py-20 border-t border-slate-800/60 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Column: Story & Philosophy -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono tracking-wider uppercase">
+            <i data-lucide="user" class="w-3.5 h-3.5"></i>
+            <span id="aboutBadgeText">About Shameer Mananthody</span>
+          </div>
+
+          <h2 id="aboutHeading" class="text-2xl sm:text-4xl font-bold text-white tracking-tight">
+            A Proven Track Record of <span class="text-gradient">Zero-Downtime Reliability</span> & Purpose-Built Automation.
+          </h2>
+
+          <p id="aboutParagraph1" class="text-slate-300 text-base leading-relaxed">
+            With over a decade of dedicated service in institutional and enterprise IT environments, I combine deep hardware diagnostic precision with contemporary cloud and web tool development. Rather than relying solely on off-the-shelf software with restrictive recurring licensing, I specialize in engineering bespoke solutions that resolve real administrative bottlenecks.
+          </p>
+
+          <p id="aboutParagraph2" class="text-slate-400 text-sm sm:text-base leading-relaxed">
+            From board-level workstation repairs and high-throughput multi-display audiovisual arrays to developing lightweight telemetry engines and zero-error allowance calculators, my approach guarantees uninterrupted operations and maximum cost-efficiency.
+          </p>
+
+          <!-- Core Competency Checklist -->
+          <div id="aboutCompetenciesContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            <div class="flex items-center gap-2.5 text-sm text-slate-200">
+              <i data-lucide="check-circle" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+              <span>Proactive Preventive Maintenance</span>
+            </div>
+            <div class="flex items-center gap-2.5 text-sm text-slate-200">
+              <i data-lucide="check-circle" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+              <span>Zero-Downtime Fleet Deployments</span>
+            </div>
+            <div class="flex items-center gap-2.5 text-sm text-slate-200">
+              <i data-lucide="check-circle" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+              <span>Hardware & Bios Level Triage</span>
+            </div>
+            <div class="flex items-center gap-2.5 text-sm text-slate-200">
+              <i data-lucide="check-circle" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+              <span>Custom Web & PowerShell Utilities</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Diagnostic Terminal Simulation -->
+        <div class="lg:col-span-5">
+          <div class="rounded-2xl glass-card overflow-hidden border border-slate-800 shadow-2xl">
+            <!-- Terminal Header -->
+            <div class="bg-slate-900/90 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+              </div>
+              <div class="text-xs font-mono text-slate-400 flex items-center gap-1.5">
+                <i data-lucide="terminal" class="w-3.5 h-3.5 text-cyan-400"></i>
+                <span id="aboutTerminalScript">sys_health.ps1 — PowerShell 7.4</span>
+              </div>
+              <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-800/60 px-2 py-0.5 rounded">ONLINE</span>
+            </div>
+
+            <!-- Terminal Body -->
+            <div class="p-5 font-mono text-xs text-slate-300 space-y-3 bg-slate-950/80 overflow-x-auto">
+              <div class="text-slate-500"># Initializing Automated Health Telemetry Engine</div>
+              <div class="flex items-center gap-2 text-cyan-400">
+                <span class="text-indigo-400">PS D:\Systems&gt;</span>
+                <span>Get-FleetStatus -Target "Admin-Fleet-01..36"</span>
+              </div>
+              <div class="bg-slate-900/90 p-3 rounded-lg border border-slate-800/80 space-y-1.5 text-[11px]">
+                <div class="flex justify-between text-slate-300">
+                  <span>[✓] Network LAN / Routing:</span>
+                  <span class="text-emerald-400 font-bold">1 Gbps Full-Duplex (0% Loss)</span>
+                </div>
+                <div class="flex justify-between text-slate-300">
+                  <span>[✓] Biometric Terminals:</span>
+                  <span class="text-emerald-400 font-bold">Syncd & Active (24/7)</span>
+                </div>
+                <div class="flex justify-between text-slate-300">
+                  <span>[✓] Endpoint Workstations:</span>
+                  <span class="text-emerald-400 font-bold">36/36 Nodes Monitored</span>
+                </div>
+                <div class="flex justify-between text-slate-300">
+                  <span>[✓] Supabase Telemetry Sync:</span>
+                  <span class="text-cyan-300 font-bold">Latency 14ms (Encrypted)</span>
+                </div>
+                <div class="flex justify-between text-slate-300">
+                  <span>[✓] Average Fleet Health:</span>
+                  <span class="text-emerald-400 font-bold">99.98% High-Uptime</span>
+                </div>
+              </div>
+              <div class="text-slate-400 pt-1 flex items-center gap-2">
+                <span class="text-emerald-400 animate-pulse">●</span>
+                <span id="aboutTerminalStatus">System Status: Zero Critical Faults Detected</span>
+              </div>
+            </div>
+
+            <!-- Terminal Footer Specs -->
+            <div class="bg-slate-900/60 px-4 py-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+              <span>Host: <span id="aboutTerminalHost" class="text-white font-mono">Shameer Core Engine</span></span>
+              <span>Uptime: <span id="aboutTerminalUptime" class="text-cyan-400 font-mono">10+ Years</span></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CORE TECHNICAL CAPABILITIES ==================== -->
+  <section id="skills" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono tracking-wider uppercase mb-4">
+          <i data-lucide="wrench" class="w-3.5 h-3.5"></i>
+          <span>Expertise Matrix</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+          Core Technical Capabilities
+        </h2>
+        <p class="text-slate-400 text-base sm:text-lg">
+          Comprehensive, full-stack IT competency spanning physical workstation architecture, networking, cloud identity, and custom software development.
+        </p>
+      </div>
+
+      <!-- Capabilities Dynamic Grid -->
+      <div id="skillsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <!-- Skeleton Placeholders -->
+        <div class="skeleton h-64 rounded-2xl"></div>
+        <div class="skeleton h-64 rounded-2xl"></div>
+        <div class="skeleton h-64 rounded-2xl"></div>
+        <div class="skeleton h-64 rounded-2xl"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FEATURED PROJECTS & CUSTOM SOLUTIONS ==================== -->
+  <section id="solutions" class="py-20 border-t border-slate-800/60 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-mono tracking-wider uppercase mb-4">
+            <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+            <span>Practical Engineering & Tools</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Featured Custom Solutions
+          </h2>
+          <p class="text-slate-400 text-base max-w-2xl mt-2">
+            In-house software, telemetry dashboards, and automated calculators built to replace manual, error-prone workflows.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-mono text-slate-400">Status:</span>
+          <span class="px-2.5 py-1 rounded-full text-xs font-mono font-medium text-cyan-300 bg-cyan-950/80 border border-cyan-800/60 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+            <span>Production Tested</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Solutions Dynamic Grid -->
+      <div id="projectsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Skeleton Placeholders -->
+        <div class="skeleton h-80 rounded-2xl"></div>
+        <div class="skeleton h-80 rounded-2xl"></div>
+        <div class="skeleton h-80 rounded-2xl"></div>
+        <div class="skeleton h-80 rounded-2xl"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SYSTEM ARCHITECTURE MODAL ==================== -->
+  <div id="projectModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="glass-card max-w-2xl w-full rounded-2xl border border-slate-700 p-6 sm:p-8 bg-slate-900/95 shadow-2xl relative translate-y-4 transition-transform duration-300" id="modalCard">
+      <button onclick="closeProjectModal()" class="absolute top-5 right-5 p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none transition-colors" aria-label="Close modal">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div id="modalContent" class="space-y-4">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== CAREER MILESTONES ==================== -->
+  <section id="experience" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono tracking-wider uppercase mb-4">
+          <i data-lucide="history" class="w-3.5 h-3.5"></i>
+          <span>Professional Trajectory</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+          Career Milestones
+        </h2>
+        <p class="text-slate-400 text-base sm:text-lg">
+          Over a decade of high-impact technical leadership, infrastructure maintenance, and progressive systems engineering.
+        </p>
+      </div>
+
+      <!-- Timeline Container -->
+      <div class="max-w-4xl mx-auto relative">
+        <!-- Vertical Central Line -->
+        <div class="absolute left-4 sm:left-1/2 top-4 bottom-4 w-[2px] bg-gradient-to-b from-cyan-400 via-indigo-500 to-slate-800 -translate-x-1/2"></div>
+
+        <div id="experienceContainer" class="space-y-12">
+          <!-- Skeleton Placeholders -->
+          <div class="skeleton h-36 rounded-2xl"></div>
+          <div class="skeleton h-36 rounded-2xl"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== EDUCATION & CREDENTIALS ==================== -->
+  <section id="education" class="py-20 border-t border-slate-800/60 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono tracking-wider uppercase mb-4">
+          <i data-lucide="award" class="w-3.5 h-3.5"></i>
+          <span>Verified Qualifications</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+          Education & Industry Credentials
+        </h2>
+        <p class="text-slate-400 text-base sm:text-lg">
+          Rigorous engineering foundation coupled with globally recognized Microsoft certifications in enterprise IT administration.
+        </p>
+      </div>
+
+      <!-- Credentials Dynamic Cards -->
+      <div id="credentialsContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Skeleton Placeholders -->
+        <div class="skeleton h-60 rounded-2xl"></div>
+        <div class="skeleton h-60 rounded-2xl"></div>
+        <div class="skeleton h-60 rounded-2xl"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT & FOOTER SECTION ==================== -->
+  <section id="contact" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Contact Hero Box -->
+      <div class="glass-card rounded-3xl p-8 sm:p-12 lg:p-16 border border-slate-800 relative overflow-hidden">
+        <div class="absolute -right-16 -bottom-16 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+          
+          <!-- Left Column -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono tracking-wider uppercase">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Open to Opportunities</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+              Ready to Strengthen Your <span class="text-gradient">IT Infrastructure</span>?
+            </h2>
+
+            <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+              Whether you need senior-level IT systems engineering, proactive fleet maintenance, or custom automation tools to supercharge your business operations, let's connect.
+            </p>
+
+            <!-- Quick Contacts Row -->
+            <div class="space-y-3 pt-2" id="contactItemsContainer">
+              <!-- Dynamically populated or fallback -->
+              <div class="skeleton h-16 rounded-xl"></div>
+              <div class="skeleton h-16 rounded-xl"></div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Quick Reach-Out Card -->
+          <div class="lg:col-span-5">
+            <div class="p-6 sm:p-8 rounded-2xl bg-slate-950/80 border border-slate-800 text-center space-y-6">
+              <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-500 to-indigo-600 p-[2px] mx-auto">
+                <div class="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center text-cyan-400">
+                  <i data-lucide="send" class="w-8 h-8"></i>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-bold text-white mb-1">Direct Networking</h3>
+                <p class="text-xs text-slate-400">Reach out for technical consulting, systems architecture, or full-time roles.</p>
+              </div>
+
+              <div class="space-y-3">
+                <a 
+                  id="directLinkedinBtn"
+                  href="https://linkedin.com/in/shameermananthody" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="flex items-center justify-center gap-2.5 w-full py-3.5 px-5 rounded-xl font-bold text-sm text-slate-950 bg-gradient-to-r from-cyan-400 via-cyan-300 to-indigo-300 hover:shadow-lg hover:shadow-cyan-500/25 active:scale-98 transition-all"
+                >
+                  <i data-lucide="linkedin" class="w-4 h-4 text-slate-950"></i>
+                  <span>Message on LinkedIn</span>
+                  <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-950"></i>
+                </a>
+
+                <a 
+                  id="directEmailBtn"
+                  href="mailto:shameerm.mananthody@gmail.com?subject=Technical%20Inquiry%20/%20Opportunity%20-%20Shameer%20Portfolio" 
+                  class="flex items-center justify-center gap-2.5 w-full py-3 px-5 rounded-xl font-semibold text-sm text-slate-200 bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-slate-600 active:scale-98 transition-all"
+                >
+                  <i data-lucide="mail" class="w-4 h-4 text-cyan-400"></i>
+                  <span>Send Direct Email</span>
+                </a>
+              </div>
+
+              <div id="locationBadge" class="text-[11px] font-mono text-slate-500 pt-2 border-t border-slate-800/80">
+                Location: Kerala, India • Global Remote Friendly
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="py-10 border-t border-slate-800/80 bg-slate-950/60 text-slate-400 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        
+        <!-- Left Brand -->
+        <div class="flex items-center gap-3">
+          <span class="font-mono font-bold text-white text-sm">SM<span class="text-cyan-400">.</span></span>
+          <span class="text-slate-600">|</span>
+          <p class="text-slate-400 font-mono">
+            &copy; 2026 Shameer Mananthody. Engineered for high performance.
+          </p>
+        </div>
+
+        <!-- Right Quick Links & Back to Top -->
+        <div class="flex items-center gap-6 font-mono text-xs">
+          <a href="#hero" class="hover:text-cyan-400 transition-colors flex items-center gap-1">
+            <span>Back to top</span>
+            <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT LOGIC & DYNAMIC ENGINE ==================== -->
+  <script>
+    /**
+     * =========================================================================
+     * 1. SUPABASE & REST API CONFIGURATION
+     * =========================================================================
+     * Supabase വഴി ഡാറ്റ ഫെച്ച് ചെയ്യാൻ നിങ്ങളുടെ URL & ANON_KEY ഇവിടെ നൽകുക:
+     */
+    const SUPABASE_CONFIG = {
+      // നിങ്ങളുടെ Supabase REST Endpoint URL:
+      API_URL: "https://kaunsweutevkytvdrwep.supabase.co/rest/v1/portfolio_data?select=*",
+      
+      // നിങ്ങളുടെ Supabase Publishable Key:
+      ANON_KEY: "sb_publishable_SAgWgEhjSWLzmAVSNhUQgA_LN4pYTEG",
+      
+      FETCH_TIMEOUT_MS: 3000 // 3 സെക്കൻഡിനുള്ളിൽ ഡാറ്റ കിട്ടിയില്ലെങ്കിൽ സ്വയം Fallback Data കാണിക്കും
+    };
+
+    // Complete, high-performance verified fallback schema
+    const FALLBACK_PORTFOLIO_DATA = {
+      profile: {
+        name: "Shameer Mananthody",
+        shortName: "Shameer M.",
+        initials: "SM.",
+        title: "IT Systems Specialist & Solutions Engineer",
+        statusBadge: "Available for Technical Roles & Consulting",
+        headline: 'Bridging <span class="text-gradient">Hardware Infrastructure</span> & Modern Digital Solutions',
+        subheading: 'Versatile IT Systems & Technical Support Specialist with <span class="text-cyan-400 font-semibold">10+ years of hands-on experience</span> maintaining high-uptime infrastructure, enterprise workstations, and building workflow automation tools.',
+        yearsExperience: "10+ Years",
+        email: "shameerm.mananthody@gmail.com",
+        phone: "+91 8547647329",
+        linkedinUrl: "https://linkedin.com/in/shameermananthody",
+        location: "Kerala, India • Global Remote Friendly"
+      },
+      about: {
+        badge: "About Shameer Mananthody",
+        headline: "A Proven Track Record of <span class=\"text-gradient\">Zero-Downtime Reliability</span> & Purpose-Built Automation.",
+        paragraph1: "With over a decade of dedicated service in institutional and enterprise IT environments, I combine deep hardware diagnostic precision with contemporary cloud and web tool development. Rather than relying solely on off-the-shelf software with restrictive recurring licensing, I specialize in engineering bespoke solutions that resolve real administrative bottlenecks.",
+        paragraph2: "From board-level workstation repairs and high-throughput multi-display audiovisual arrays to developing lightweight telemetry engines and zero-error allowance calculators, my approach guarantees uninterrupted operations and maximum cost-efficiency.",
+        competencies: [
+          "Proactive Preventive Maintenance",
+          "Zero-Downtime Fleet Deployments",
+          "Hardware & Bios Level Triage",
+          "Custom Web & PowerShell Utilities"
+        ],
+        terminalScript: "sys_health.ps1 — PowerShell 7.4",
+        terminalHost: "Shameer Core Engine",
+        terminalUptime: "10+ Years",
+        terminalStatus: "Zero Critical Faults Detected"
+      },
+      highlights: [
+        { label: "Field Experience", value: "10+ Years", icon: "shield-check", color: "cyan" },
+        { label: "Fleet Monitoring", value: "36+ Systems", icon: "monitor", color: "indigo" },
+        { label: "IT Management", value: "Full-Lifecycle", icon: "layers", color: "purple" },
+        { label: "Zero-Cost Deployments", value: "Rapid & Agile", icon: "zap", color: "emerald" }
+      ],
+      skills: [
+        {
+          id: "hw-diag",
+          title: "Hardware & Workstation Diagnostics",
+          icon: "hard-drive",
+          color: "cyan",
+          description: "Expert board-level triage, custom desktop rebuilds, master OS image cloning, peripheral troubleshooting, and end-to-end hardware lifecycle sustainability.",
+          proficiencies: ["Motherboard & Component Triage", "OS Imaging & Cloning", "BIOS/UEFI Configuration", "Preventative Servicing"]
+        },
+        {
+          id: "net-sys",
+          title: "Enterprise Network & Systems",
+          icon: "network",
+          color: "indigo",
+          description: "Biometric attendance infrastructure, LAN structured cabling & routing, centralized print server fleet management, and high-resolution multi-display AV engineering.",
+          proficiencies: ["Biometric Attendance Systems", "LAN Routing & Switching", "Network Printer Fleets", "Multi-Display AV Setup"]
+        },
+        {
+          id: "cloud-work",
+          title: "Cloud & Modern Workplace",
+          icon: "cloud",
+          color: "cyan",
+          description: "Administration of Microsoft 365, Google Workspace, Azure fundamentals, identity access control, centralized user provisioning, and secure collaborative workflows.",
+          proficiencies: ["Microsoft 365 Admin", "Google Workspace", "Azure AD / Entra ID", "Identity & Role Provisioning"]
+        },
+        {
+          id: "auto-script",
+          title: "Internal Automation & Scripting",
+          icon: "code-2",
+          color: "indigo",
+          description: "PowerShell system automation, Supabase cloud integrations, and mobile-first micro-utilities using modern agentic development workflows for zero-cost rapid deployment.",
+          proficiencies: ["PowerShell Scripting", "Supabase & PostgreSQL", "Agentic Dev Workflows", "SPA & Modern Web Tech"]
+        }
+      ],
+      projects: [
+        {
+          id: "hardware-audit",
+          title: "Enterprise Hardware Stock & Audit Hub",
+          category: "Asset Intelligence",
+          badge: "v2.4 Live",
+          icon: "boxes",
+          color: "cyan",
+          description: "Centralized platform replacing traditional paper logs with digitized hardware lifecycles, automated warranty expiration alerts, and dynamic asset depreciation tracking across departmental tiers.",
+          highlights: [
+            "Eliminated asset untracked leakage by 100%",
+            "Automated preventative maintenance alerts"
+          ],
+          tags: ["Web App", "Inventory Automation", "Analytics"],
+          overview: "A robust, lightweight asset tracking and hardware lifecycle portal engineered to displace fragmented spreadsheet and paper ledger records across multi-departmental facilities.",
+          features: [
+            "Direct serial number and hardware spec tracking (CPU, RAM, Storage, Motherboard serials).",
+            "Automated statutory depreciation calculations based on standardized asset lifespan guidelines.",
+            "Proactive notification queue for warranty expirations and scheduled thermal paste / component servicing.",
+            "Granular role-based view for department heads vs. central IT administration."
+          ],
+          stack: ["Modern SPA (HTML5/Tailwind)", "Supabase / Cloud DB", "PowerShell Telemetry Hooks", "Lucide UI"]
+        },
+        {
+          id: "fleet-health",
+          title: "Real-time Workstation & Fleet Health Dashboard",
+          category: "Telemetry & Monitoring",
+          badge: "Live Telemetry",
+          icon: "activity",
+          color: "indigo",
+          description: "Native multi-department fleet monitoring system tracking 30+ endpoints for real-time CPU, RAM, disk space, and network health without the heavy performance overhead of third-party commercial agents.",
+          highlights: [
+            "PowerShell daemon syncs metrics to Supabase",
+            "Zero client license expense for the enterprise"
+          ],
+          tags: ["PowerShell", "Supabase", "Tailwind", "Telemetry"],
+          overview: "Custom telemetry monitoring system tracking 30+ distributed Windows workstations simultaneously. Eliminates high-cost commercial monitoring agent licenses by utilizing native Windows WMI/CIM and PowerShell 7.",
+          features: [
+            "Real-time streaming of CPU load, Memory pressure, Disk IOPS, and temperature anomalies.",
+            "Encrypted payload transmission to cloud backend with automatic failover caching during network drops.",
+            "Instant alert dispatch for drive failures, S.M.A.R.T. disk warnings, and unresponsive services.",
+            "Zero-cost operational footprint with ultra-lightweight client execution overhead."
+          ],
+          stack: ["PowerShell 7.x (Native WMI/CIM)", "Supabase PostgreSQL", "Tailwind CSS", "Vector Charts Engine"]
+        },
+        {
+          id: "operational-diary",
+          title: "Smart Operational Diary & Schedule Engine",
+          category: "Field Operations",
+          badge: "Mobile-First",
+          icon: "calendar-check",
+          color: "purple",
+          description: "Mobile-first utility centralizing administrative task routing, meeting logs, priority escalations, and staff schedules for streamlined field coordination and daily dispatching.",
+          highlights: [
+            "Offline-ready caching for on-site field visits",
+            "Automated daily summary report generator"
+          ],
+          tags: ["Mobile Application", "Antigravity IDE", "Operations"],
+          overview: "A high-performance mobile-first coordination hub designed for field engineers and administrative dispatchers to manage daily tickets, physical on-site audits, and maintenance schedules.",
+          features: [
+            "Offline-first architecture supporting full operational logs in connectivity-constrained basements and server closets.",
+            "One-touch incident ticket escalation and emergency dispatch routing.",
+            "Automated end-of-day operations summary compiling completed tasks and pending hardware replacements.",
+            "Integration with Google Workspace and Microsoft 365 calendar synchronization."
+          ],
+          stack: ["Antigravity IDE", "Mobile-First SPA", "Local Storage Caching", "Cloud Sync API"]
+        },
+        {
+          id: "allowance-engine",
+          title: "Regulatory Allowance & Compensation Engine",
+          category: "Institutional FinTech",
+          badge: "Zero-Error Validated",
+          icon: "calculator",
+          color: "emerald",
+          description: "Automated portal for complex regulatory allowance calculations, eliminating manual mathematical discrepancies, applying statutory slabs, and speeding up approval workflows.",
+          highlights: [
+            "Reduced processing time from days to seconds",
+            "100% audit-compliant computational validation"
+          ],
+          tags: ["Algorithmic Logic", "Zero-Error FinTech Tool"],
+          overview: "A bulletproof calculation and verification utility built to eliminate human calculation discrepancies in complex statutory allowance structures, overtime matrices, and compensation bands.",
+          features: [
+            "Deterministic math engine adhering strictly to state/institutional financial regulations and ceiling caps.",
+            "Instant discrepancy detection highlighting conflicting claims or out-of-band submissions.",
+            "One-click audit export generating print-ready, compliance-grade calculation balance sheets.",
+            "Drastically lowered approval cycle latency from 4 business days to under 30 seconds."
+          ],
+          stack: ["Vanilla JavaScript Math Engine", "Tailwind CSS", "PDF/Print Export Pipeline", "Client-side Cryptographic Checksums"]
+        }
+      ],
+      experience: [
+        {
+          period: "2013 – Present • 10+ Years",
+          role: "Senior Technical Assistant / Systems Specialist",
+          domain: "Administrative & Institutional Operations",
+          color: "cyan",
+          points: [
+            "Orchestrated end-to-end IT operations, uninterrupted network uptime, and hardware lifecycle across distributed administrative departments.",
+            "Engineered custom internal web utilities and automated PowerShell scripts to eliminate bureaucratic operational bottlenecks and paper-based tracking.",
+            "Administered biometric attendance infrastructure and multi-node printer server environments with zero unplanned outages."
+          ]
+        },
+        {
+          period: "Early Career Milestone • 1 Year",
+          role: "Technical Coordinator & Systems Deployment Specialist",
+          domain: "Display Systems & Infrastructure Engineering",
+          color: "indigo",
+          points: [
+            "Deployed, configured, and maintained interactive display units, mobile computer hubs, and multimedia presentation infrastructure.",
+            "Delivered high-throughput technical support during executive sessions and high-stakes conference operations."
+          ]
+        }
+      ],
+      credentials: [
+        {
+          title: "Three-Year Polytechnic Diploma",
+          field: "Computer Hardware & Maintenance Engineering",
+          issuer: "State Board of Technical Education",
+          tag: "3-Year Eng.",
+          type: "Engineering Foundation",
+          icon: "graduation-cap",
+          color: "cyan",
+          description: "Specialized in digital electronics, microprocessors, diagnostic triage, circuit analysis, and operating system kernels."
+        },
+        {
+          title: "MCTS: Microsoft Certified Technology Specialist",
+          field: "Windows Server Infrastructure",
+          issuer: "Microsoft Official",
+          tag: "MCTS Verified",
+          type: "Microsoft Certified",
+          icon: "badge-check",
+          color: "indigo",
+          description: "Validation in depth of Windows Server infrastructure, Active Directory domain architecture, DNS, DHCP, and enterprise network services."
+        },
+        {
+          title: "MCITP: Microsoft Certified IT Professional",
+          field: "Enterprise Administration",
+          issuer: "Microsoft Official",
+          tag: "MCITP Verified",
+          type: "Microsoft Certified",
+          icon: "shield",
+          color: "purple",
+          description: "Enterprise administration credential demonstrating capability to plan, deploy, configure, and troubleshoot enterprise systems and workplace environments."
+        }
+      ]
+    };
+
+    // Current active portfolio state
+    let activePortfolioData = FALLBACK_PORTFOLIO_DATA;
+
+    /**
+     * =========================================================================
+     * 2. DYNAMIC DATA FETCHING & SYNCHRONIZATION
+     * =========================================================================
+     */
+    async function fetchPortfolioData() {
+      const url = SUPABASE_CONFIG.API_URL;
+      const key = SUPABASE_CONFIG.ANON_KEY;
+
+      // If user hasn't replaced placeholder with actual live endpoint URL
+      if (!url || url.includes('your-supabase-project') || url.includes('YOUR_SUPABASE_')) {
+        console.info('[Portfolio Engine] Using instant verified profile data cache.');
+        renderEntirePortfolio(FALLBACK_PORTFOLIO_DATA);
+        return;
+      }
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), SUPABASE_CONFIG.FETCH_TIMEOUT_MS);
+
+      try {
+        const headers = { 'Content-Type': 'application/json' };
+        if (key && !key.includes('YOUR_SUPABASE_ANON_KEY')) {
+          headers['apikey'] = key;
+          headers['Authorization'] = `Bearer ${key}`;
+        }
+
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: headers,
+          signal: controller.signal
+        });
+
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+          throw new Error(`HTTP Error ${response.status}: ${response.statusText}`);
+        }
+
+        let fetchedData = await response.json();
+
+        // If returned as Supabase row array: [{ data: {...} }] or raw row object
+        if (Array.isArray(fetchedData) && fetchedData.length > 0 && fetchedData[0].data) {
+          fetchedData = fetchedData[0].data;
+        } else if (Array.isArray(fetchedData) && fetchedData.length > 0 && fetchedData[0].profile) {
+          fetchedData = fetchedData[0];
+        }
+
+        // Validate essential keys, merge with fallback for resiliency
+        const mergedData = {
+          profile: { ...FALLBACK_PORTFOLIO_DATA.profile, ...(fetchedData.profile || {}) },
+          about: fetchedData.about || FALLBACK_PORTFOLIO_DATA.about,
+          highlights: fetchedData.highlights || FALLBACK_PORTFOLIO_DATA.highlights,
+          skills: fetchedData.skills || FALLBACK_PORTFOLIO_DATA.skills,
+          projects: fetchedData.projects || FALLBACK_PORTFOLIO_DATA.projects,
+          experience: fetchedData.experience || FALLBACK_PORTFOLIO_DATA.experience,
+          credentials: fetchedData.credentials || FALLBACK_PORTFOLIO_DATA.credentials,
+        };
+
+        activePortfolioData = mergedData;
+        renderEntirePortfolio(mergedData);
+        console.info('[Portfolio Engine] Successfully fetched live data from Supabase!');
+
+      } catch (err) {
+        clearTimeout(timeoutId);
+        console.warn('[Portfolio Engine] Supabase fetch error / timeout:', err.message, '-> Fallback rendered.');
+        activePortfolioData = FALLBACK_PORTFOLIO_DATA;
+        renderEntirePortfolio(FALLBACK_PORTFOLIO_DATA);
+      }
+    }
+
+    /**
+     * =========================================================================
+     * 3. DYNAMIC DOM RENDERING ENGINES
+     * =========================================================================
+     */
+    function renderEntirePortfolio(data) {
+      renderProfileHero(data.profile);
+      renderAbout(data.about);
+      renderHighlights(data.highlights);
+      renderSkills(data.skills);
+      renderProjects(data.projects);
+      renderExperience(data.experience);
+      renderCredentials(data.credentials);
+      renderContacts(data.profile);
+
+      // Re-initialize Lucide Icons for freshly rendered DOM nodes
+      lucide.createIcons();
+    }
+
+    // Render About Story & Philosophy
+    function renderAbout(about) {
+      if (!about) return;
+      const aboutBadgeText = document.getElementById('aboutBadgeText');
+      const aboutHeading = document.getElementById('aboutHeading');
+      const aboutParagraph1 = document.getElementById('aboutParagraph1');
+      const aboutParagraph2 = document.getElementById('aboutParagraph2');
+      const aboutCompetenciesContainer = document.getElementById('aboutCompetenciesContainer');
+      const aboutTerminalScript = document.getElementById('aboutTerminalScript');
+      const aboutTerminalStatus = document.getElementById('aboutTerminalStatus');
+      const aboutTerminalHost = document.getElementById('aboutTerminalHost');
+      const aboutTerminalUptime = document.getElementById('aboutTerminalUptime');
+
+      if (aboutBadgeText && about.badge) aboutBadgeText.textContent = about.badge;
+      if (aboutHeading && about.headline) aboutHeading.innerHTML = about.headline;
+      if (aboutParagraph1 && about.paragraph1) aboutParagraph1.textContent = about.paragraph1;
+      if (aboutParagraph2 && about.paragraph2) aboutParagraph2.textContent = about.paragraph2;
+      if (aboutTerminalScript && about.terminalScript) aboutTerminalScript.textContent = about.terminalScript;
+      if (aboutTerminalStatus && about.terminalStatus) aboutTerminalStatus.textContent = about.terminalStatus;
+      if (aboutTerminalHost && about.terminalHost) aboutTerminalHost.textContent = about.terminalHost;
+      if (aboutTerminalUptime && about.terminalUptime) aboutTerminalUptime.textContent = about.terminalUptime;
+
+      if (aboutCompetenciesContainer && about.competencies) {
+        aboutCompetenciesContainer.innerHTML = about.competencies.map(c => `
+          <div class="flex items-center gap-2.5 text-sm text-slate-200">
+            <i data-lucide="check-circle" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+            <span>${c}</span>
+          </div>
+        `).join('');
+      }
+    }
+
+    // Render Hero Profile Details
+    function renderProfileHero(profile) {
+      if (!profile) return;
+
+      // Nav branding
+      const navInitials = document.getElementById('navInitials');
+      const navName = document.getElementById('navName');
+      if (navInitials) navInitials.innerHTML = `${profile.initials || 'SM.'}`;
+      if (navName) navName.textContent = profile.shortName || profile.name;
+
+      // Hero Avatar Photo (if provided)
+      const heroAvatarContainer = document.getElementById('heroAvatarContainer');
+      if (heroAvatarContainer) {
+        if (profile.avatarUrl) {
+          heroAvatarContainer.innerHTML = `
+            <div class="relative group inline-block">
+              <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-indigo-500 to-purple-500 rounded-full blur-md opacity-75 group-hover:opacity-100 transition duration-300 animate-pulse-glow"></div>
+              <img 
+                src="${profile.avatarUrl}" 
+                alt="${profile.name}" 
+                class="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover border-2 border-slate-900 shadow-2xl transition-transform duration-300 group-hover:scale-105" 
+              />
+              <span class="absolute bottom-1 right-2 w-4 h-4 bg-emerald-500 border-2 border-slate-950 rounded-full" title="Online & Available"></span>
+            </div>
+          `;
+        } else {
+          heroAvatarContainer.innerHTML = '';
+        }
+      }
+
+      // Hero Badge
+      const heroBadgeContainer = document.getElementById('heroBadgeContainer');
+      if (heroBadgeContainer) {
+        heroBadgeContainer.innerHTML = `
+          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/90 border border-emerald-500/30 shadow-lg shadow-emerald-500/10 backdrop-blur-md transition-transform hover:scale-105 cursor-default">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+            </span>
+            <span class="text-xs sm:text-sm font-mono font-medium text-emerald-300">
+              ${profile.statusBadge || 'Available for Technical Roles & Consulting'}
+            </span>
+          </div>
+        `;
+      }
+
+      // Hero Headline
+      const heroHeadlineContainer = document.getElementById('heroHeadlineContainer');
+      if (heroHeadlineContainer) {
+        heroHeadlineContainer.innerHTML = `
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
+            ${profile.headline}
+          </h1>
+        `;
+      }
+
+      // Hero Subheading
+      const heroSubheadingContainer = document.getElementById('heroSubheadingContainer');
+      if (heroSubheadingContainer) {
+        heroSubheadingContainer.innerHTML = `
+          <p class="text-base sm:text-lg lg:text-xl text-slate-300/90 leading-relaxed font-normal">
+            ${profile.subheading}
+          </p>
+        `;
+      }
+
+      // LinkedIn Links update
+      const navLinkedinLink = document.getElementById('navLinkedinLink');
+      const mobileLinkedinLink = document.getElementById('mobileLinkedinLink');
+      const heroLinkedinCta = document.getElementById('heroLinkedinCta');
+      const directLinkedinBtn = document.getElementById('directLinkedinBtn');
+
+      [navLinkedinLink, mobileLinkedinLink, heroLinkedinCta, directLinkedinBtn].forEach(el => {
+        if (el && profile.linkedinUrl) el.href = profile.linkedinUrl;
+      });
+    }
+
+    // Render Hero Highlights Bar
+    function renderHighlights(highlights) {
+      const container = document.getElementById('highlightsContainer');
+      if (!container || !highlights) return;
+
+      container.innerHTML = highlights.map(item => `
+        <div class="flex flex-col items-center text-center p-3.5 rounded-xl bg-slate-900/50 border border-slate-800/60 hover:border-cyan-500/30 transition-all group">
+          <div class="w-8 h-8 rounded-lg bg-${item.color || 'cyan'}-500/10 flex items-center justify-center mb-2 text-${item.color || 'cyan'}-400 group-hover:scale-110 transition-transform">
+            <i data-lucide="${item.icon || 'shield'}" class="w-4 h-4"></i>
+          </div>
+          <span class="text-xl sm:text-2xl font-bold font-mono text-white tracking-tight">${item.value}</span>
+          <span class="text-xs text-slate-400 font-medium">${item.label}</span>
+        </div>
+      `).join('');
+    }
+
+    // Render Skills Grid
+    function renderSkills(skills) {
+      const container = document.getElementById('skillsContainer');
+      if (!container || !skills) return;
+
+      container.innerHTML = skills.map(skill => `
+        <div class="glass-card rounded-2xl p-7 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 group relative overflow-hidden">
+          <div class="absolute -right-8 -top-8 w-32 h-32 bg-${skill.color || 'cyan'}-500/10 rounded-full blur-2xl group-hover:bg-${skill.color || 'cyan'}-500/20 transition-all"></div>
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-${skill.color || 'cyan'}-500/10 border border-${skill.color || 'cyan'}-500/20 flex items-center justify-center text-${skill.color || 'cyan'}-400 mb-6 group-hover:scale-110 group-hover:bg-${skill.color || 'cyan'}-500 group-hover:text-slate-950 transition-all duration-300">
+              <i data-lucide="${skill.icon || 'code'}" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-${skill.color || 'cyan'}-300 transition-colors">
+              ${skill.title}
+            </h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+              ${skill.description}
+            </p>
+          </div>
+
+          <div class="space-y-2 pt-4 border-t border-slate-800">
+            <span class="text-xs font-mono text-${skill.color || 'cyan'}-400 font-semibold uppercase tracking-wider block">Key Proficiencies:</span>
+            <div class="flex flex-wrap gap-2">
+              ${(skill.proficiencies || []).map(p => `
+                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800/80 text-slate-300 border border-slate-700/60">${p}</span>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Render Featured Projects Grid
+    function renderProjects(projects) {
+      const container = document.getElementById('projectsContainer');
+      if (!container || !projects) return;
+
+      container.innerHTML = projects.map(proj => `
+        <div class="glass-card rounded-2xl p-7 border border-slate-800 flex flex-col justify-between hover:border-${proj.color || 'cyan'}-500/40 transition-all duration-300 group">
+          <div>
+            <!-- Top bar -->
+            <div class="flex items-center justify-between gap-4 mb-4">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-lg bg-${proj.color || 'cyan'}-500/10 text-${proj.color || 'cyan'}-400 flex items-center justify-center border border-${proj.color || 'cyan'}-500/20">
+                  <i data-lucide="${proj.icon || 'layers'}" class="w-5 h-5"></i>
+                </div>
+                <span class="text-xs font-mono text-${proj.color || 'cyan'}-400 uppercase tracking-wider font-semibold">${proj.category}</span>
+              </div>
+              <span class="text-xs font-mono text-slate-400 bg-slate-900 px-2.5 py-1 rounded border border-slate-800">${proj.badge}</span>
+            </div>
+
+            <!-- Title -->
+            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-${proj.color || 'cyan'}-300 transition-colors">
+              ${proj.title}
+            </h3>
+
+            <!-- Description -->
+            <p class="text-slate-300 text-sm leading-relaxed mb-5">
+              ${proj.description}
+            </p>
+
+            <!-- Key Feature Bullets -->
+            <ul class="space-y-2 mb-6 text-xs text-slate-400 font-mono">
+              ${(proj.highlights || []).map(h => `
+                <li class="flex items-center gap-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-${proj.color || 'cyan'}-400"></i>
+                  <span>${h}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+
+          <!-- Tags & Action -->
+          <div>
+            <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-800/80 mb-4">
+              ${(proj.tags || []).map((t, idx) => `
+                <span class="text-xs font-mono px-2.5 py-1 rounded ${idx === 0 ? `bg-slate-900/90 text-${proj.color || 'cyan'}-300 border border-${proj.color || 'cyan'}-500/20` : 'bg-slate-900/90 text-slate-300 border border-slate-800'}">${t}</span>
+              `).join('')}
+            </div>
+            
+            <button onclick="showProjectDetails('${proj.id}')" class="w-full py-2.5 px-4 rounded-xl text-xs font-semibold text-slate-300 hover:text-white bg-slate-900/90 hover:bg-slate-800 border border-slate-800 hover:border-${proj.color || 'cyan'}-500/40 flex items-center justify-center gap-2 transition-all">
+              <i data-lucide="info" class="w-3.5 h-3.5 text-${proj.color || 'cyan'}-400"></i>
+              <span>View System Architecture</span>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Render Career Experience Timeline
+    function renderExperience(milestones) {
+      const container = document.getElementById('experienceContainer');
+      if (!container || !milestones) return;
+
+      container.innerHTML = milestones.map((item, idx) => {
+        const isEven = idx % 2 === 1;
+        return `
+          <div class="relative flex flex-col sm:flex-row items-start group">
+            
+            <!-- Timeline Node Dot -->
+            <div class="absolute left-4 sm:left-1/2 w-8 h-8 -translate-x-1/2 rounded-full bg-slate-950 border-2 border-${item.color || 'cyan'}-400 flex items-center justify-center z-10 shadow-lg shadow-${item.color || 'cyan'}-500/30 group-hover:scale-125 transition-transform duration-300">
+              <span class="w-2.5 h-2.5 rounded-full bg-${item.color || 'cyan'}-400"></span>
+            </div>
+
+            <!-- Left Box -->
+            <div class="sm:w-1/2 pl-12 sm:pl-0 sm:pr-10 ${isEven ? 'sm:text-right order-2 sm:order-1 mt-2 sm:mt-0' : 'sm:text-right mb-2 sm:mb-0'}">
+              ${isEven ? `
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-${item.color || 'indigo'}-500/30 transition-all text-left">
+                  <h3 class="text-lg sm:text-xl font-bold text-white mb-2">${item.role}</h3>
+                  <ul class="space-y-3 text-sm text-slate-300 leading-relaxed">
+                    ${(item.points || []).map(pt => `
+                      <li class="flex items-start gap-2.5">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-${item.color || 'indigo'}-400 shrink-0 mt-1"></i>
+                        <span>${pt}</span>
+                      </li>
+                    `).join('')}
+                  </ul>
+                </div>
+              ` : `
+                <span class="inline-block px-3 py-1 rounded-full text-xs font-mono font-semibold bg-${item.color || 'cyan'}-950/90 text-${item.color || 'cyan'}-300 border border-${item.color || 'cyan'}-800/80 mb-1">
+                  ${item.period}
+                </span>
+                <h4 class="text-sm font-semibold text-slate-300">${item.domain}</h4>
+              `}
+            </div>
+
+            <!-- Right Box -->
+            <div class="sm:w-1/2 pl-12 sm:pl-10 ${isEven ? 'order-1 sm:order-2 mb-2 sm:mb-0' : ''}">
+              ${isEven ? `
+                <span class="inline-block px-3 py-1 rounded-full text-xs font-mono font-semibold bg-${item.color || 'indigo'}-950/90 text-${item.color || 'indigo'}-300 border border-${item.color || 'indigo'}-800/80 mb-1">
+                  ${item.period}
+                </span>
+                <h4 class="text-sm font-semibold text-slate-300">${item.domain}</h4>
+              ` : `
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-${item.color || 'cyan'}-500/30 transition-all">
+                  <h3 class="text-lg sm:text-xl font-bold text-white mb-2">${item.role}</h3>
+                  <ul class="space-y-3 text-sm text-slate-300 leading-relaxed">
+                    ${(item.points || []).map(pt => `
+                      <li class="flex items-start gap-2.5">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-${item.color || 'cyan'}-400 shrink-0 mt-1"></i>
+                        <span>${pt}</span>
+                      </li>
+                    `).join('')}
+                  </ul>
+                </div>
+              `}
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Render Credentials Cards
+    function renderCredentials(creds) {
+      const container = document.getElementById('credentialsContainer');
+      if (!container || !creds) return;
+
+      container.innerHTML = creds.map(cred => `
+        <div class="glass-card p-6 rounded-2xl border border-slate-800 flex flex-col justify-between hover:border-${cred.color || 'cyan'}-500/40 transition-all group">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-${cred.color || 'cyan'}-500/10 border border-${cred.color || 'cyan'}-500/20 flex items-center justify-center text-${cred.color || 'cyan'}-400 mb-5 group-hover:scale-110 transition-transform">
+              <i data-lucide="${cred.icon || 'award'}" class="w-6 h-6"></i>
+            </div>
+            <span class="text-xs font-mono text-${cred.color || 'cyan'}-400 uppercase tracking-wider font-semibold block mb-1">${cred.type}</span>
+            <h3 class="text-lg font-bold text-white mb-3">
+              ${cred.title}
+            </h3>
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+              ${cred.description}
+            </p>
+          </div>
+          <div class="pt-4 mt-6 border-t border-slate-800 flex items-center justify-between text-xs font-mono text-slate-400">
+            <span>${cred.issuer}</span>
+            <span class="text-${cred.color || 'cyan'}-400 font-bold">${cred.tag}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Render Contact Section
+    function renderContacts(profile) {
+      const container = document.getElementById('contactItemsContainer');
+      const directEmailBtn = document.getElementById('directEmailBtn');
+      const locationBadge = document.getElementById('locationBadge');
+
+      if (profile.location && locationBadge) {
+        locationBadge.textContent = `Location: ${profile.location}`;
+      }
+
+      if (profile.email && directEmailBtn) {
+        directEmailBtn.href = `mailto:${profile.email}?subject=Technical%20Inquiry%20/%20Opportunity%20-%20Shameer%20Portfolio`;
+      }
+
+      if (container && profile) {
+        container.innerHTML = `
+          <!-- Email Item with Copy Button -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/30 transition-all">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center">
+                <i data-lucide="mail" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <span class="text-[11px] font-mono text-slate-400 uppercase tracking-wider block">Email Address</span>
+                <a href="mailto:${profile.email}" class="text-sm font-semibold text-white hover:text-cyan-400 transition-colors">
+                  ${profile.email}
+                </a>
+              </div>
+            </div>
+            <button 
+              onclick="copyToClipboard('${profile.email}', 'Email copied to clipboard!')"
+              class="self-end sm:self-auto px-3 py-1.5 rounded-lg text-xs font-mono font-medium text-slate-300 bg-slate-800 hover:bg-slate-700 hover:text-white border border-slate-700 transition-all flex items-center gap-1.5"
+              title="Copy email"
+            >
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span>Copy</span>
+            </button>
+          </div>
+
+          <!-- Phone Item with Copy Button -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500/30 transition-all">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+                <i data-lucide="phone" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <span class="text-[11px] font-mono text-slate-400 uppercase tracking-wider block">Direct Phone</span>
+                <a href="tel:${profile.phone.replace(/\s+/g, '')}" class="text-sm font-semibold text-white hover:text-indigo-400 transition-colors">
+                  ${profile.phone}
+                </a>
+              </div>
+            </div>
+            <button 
+              onclick="copyToClipboard('${profile.phone}', 'Phone number copied!')"
+              class="self-end sm:self-auto px-3 py-1.5 rounded-lg text-xs font-mono font-medium text-slate-300 bg-slate-800 hover:bg-slate-700 hover:text-white border border-slate-700 transition-all flex items-center gap-1.5"
+              title="Copy phone"
+            >
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span>Copy</span>
+            </button>
+          </div>
+        `;
+      }
+    }
+
+    /**
+     * =========================================================================
+     * 4. INTERACTIVE MODAL & UTILITY FUNCTIONS
+     * =========================================================================
+     */
+    // Project Detail Modal Engine
+    const projectModal = document.getElementById('projectModal');
+    const modalCard = document.getElementById('modalCard');
+    const modalContent = document.getElementById('modalContent');
+
+    function showProjectDetails(projectId) {
+      const data = (activePortfolioData.projects || []).find(p => p.id === projectId);
+      if (!data) return;
+
+      modalContent.innerHTML = `
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-800">
+          <div class="w-10 h-10 rounded-xl bg-${data.color || 'cyan'}-500/10 text-${data.color || 'cyan'}-400 flex items-center justify-center border border-${data.color || 'cyan'}-500/20">
+            <i data-lucide="${data.icon || 'layers'}" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <span class="text-[11px] font-mono text-${data.color || 'cyan'}-400 uppercase tracking-wider font-semibold">${data.badge}</span>
+            <h3 class="text-xl font-bold text-white">${data.title}</h3>
+          </div>
+        </div>
+
+        <p class="text-slate-300 text-sm leading-relaxed">${data.overview || data.description}</p>
+
+        <div class="space-y-2">
+          <h4 class="text-xs font-mono font-bold text-slate-200 uppercase tracking-wider">Key Architecture & Capabilities:</h4>
+          <ul class="space-y-1.5 text-xs text-slate-300">
+            ${(data.features || data.highlights || []).map(f => `<li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-${data.color || 'cyan'}-400 mt-0.5 shrink-0"></i><span>${f}</span></li>`).join('')}
+          </ul>
+        </div>
+
+        <div class="pt-3 border-t border-slate-800">
+          <h4 class="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider mb-2">Technology Stack:</h4>
+          <div class="flex flex-wrap gap-2">
+            ${(data.stack || data.tags || []).map(s => `<span class="text-xs font-mono px-2.5 py-1 rounded bg-slate-800 text-${data.color || 'cyan'}-300 border border-slate-700">${s}</span>`).join('')}
+          </div>
+        </div>
+      `;
+
+      lucide.createIcons();
+
+      projectModal.classList.remove('opacity-0', 'pointer-events-none');
+      projectModal.classList.add('opacity-100');
+      modalCard.classList.remove('translate-y-4');
+      modalCard.classList.add('translate-y-0');
+    }
+
+    function closeProjectModal() {
+      projectModal.classList.remove('opacity-100');
+      projectModal.classList.add('opacity-0', 'pointer-events-none');
+      modalCard.classList.remove('translate-y-0');
+      modalCard.classList.add('translate-y-4');
+    }
+
+    // Modal Global Click Listeners
+    window.addEventListener('click', (e) => {
+      if (e.target === projectModal) closeProjectModal();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeProjectModal();
+      }
+    });
+
+    // Copy to Clipboard Toast
+    function copyToClipboard(text, message) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(message || 'Copied to clipboard!');
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+
+    let toastTimeout;
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.textContent = msg;
+
+      clearTimeout(toastTimeout);
+      toast.classList.remove('opacity-0', 'translate-y-8', 'pointer-events-none');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-8', 'pointer-events-none');
+      }, 3200);
+    }
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIconOpen = document.getElementById('menuIconOpen');
+    const menuIconClose = document.getElementById('menuIconClose');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+      mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+      mobileMenu.classList.toggle('hidden');
+      menuIconOpen.classList.toggle('hidden');
+      menuIconClose.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuIconOpen.classList.remove('hidden');
+        menuIconClose.classList.add('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Scroll Progress & Active Spy
+    const scrollProgress = document.getElementById('scrollProgress');
+    const mainHeader = document.getElementById('mainHeader');
+
+    window.addEventListener('scroll', () => {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (window.scrollY / totalScroll) * 100;
+      scrollProgress.style.width = `${progress}%`;
+
+      if (window.scrollY > 20) {
+        mainHeader.classList.add('shadow-xl', 'shadow-black/40');
+      } else {
+        mainHeader.classList.remove('shadow-xl', 'shadow-black/40');
+      }
+
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('#desktopNav .nav-link');
+      let currentSectionId = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.offsetHeight;
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+          currentSectionId = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSectionId}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    /**
+     * =========================================================================
+     * 5. INITIALIZATION ON DOMContentLoaded
+     * =========================================================================
+     */
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      fetchPortfolioData();
+    });
+  </script>
+</body>
+</html>
